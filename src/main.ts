@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { writeFileSync } from 'fs';
+import * as yaml from 'yaml'; // YAML conversion library
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

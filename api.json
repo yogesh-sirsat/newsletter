@@ -1,0 +1,611 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/users/register": {
+      "post": {
+        "operationId": "UserController_register",
+        "summary": "",
+        "description": "Register a new user",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "operationId": "UserController_login",
+        "summary": "",
+        "description": "Login a user",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "operationId": "UserController_findOne",
+        "summary": "",
+        "description": "Get a user by id",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "User ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/subscriber": {
+      "post": {
+        "operationId": "SubscriberController_create",
+        "summary": "",
+        "description": "Add a new subscriber",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSubscriberDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Subscriber"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "SubscriberController_findAll",
+        "summary": "",
+        "description": "List subscribers with pagination and filtering",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Page number for pagination",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Number of items per page",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "email",
+            "required": false,
+            "in": "query",
+            "description": "Filter by email address",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Subscriber"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/subscriber/{id}": {
+      "put": {
+        "operationId": "SubscriberController_update",
+        "summary": "",
+        "description": "Update subscriber information",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Subscriber ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriberDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Subscriber"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/lists": {
+      "post": {
+        "operationId": "ListsController_create",
+        "summary": "",
+        "description": "Add a new list",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateListDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "List"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "ListsController_findAll",
+        "summary": "",
+        "description": "List all lists for the organization.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "List"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/lists/{id}": {
+      "put": {
+        "operationId": "ListsController_update",
+        "summary": "",
+        "description": "Update list information",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "List ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateListDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "List"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/campaigns": {
+      "post": {
+        "operationId": "CampaignController_create",
+        "summary": "",
+        "description": "Add a new campaign",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCampaignDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Campaign"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "CampaignController_findAll",
+        "summary": "",
+        "description": "List all campaigns for the organization.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Campaign"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/campaigns/{id}/send": {
+      "post": {
+        "operationId": "CampaignController_send",
+        "summary": "",
+        "description": "Send a campaign",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Campaign ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Campaign"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/organizations": {
+      "post": {
+        "operationId": "OrganizationController_create",
+        "summary": "",
+        "description": "Create a new organization",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrganizationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Organization"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "OrganizationController_findAll",
+        "summary": "",
+        "description": "Get list of all organizations(Admin only)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Organization"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Newsletter API",
+    "description": "Newsletter API documentation in detail.",
+    "version": "0.0.1",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "RegisterUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user"
+          },
+          "password": {
+            "type": "string",
+            "description": "The password for the user"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "superadmin",
+              "admin",
+              "user"
+            ],
+            "description": "The role of the user"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The id of the organization the user belongs to"
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "role",
+          "organization_id"
+        ]
+      },
+      "LoginUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the user"
+          },
+          "password": {
+            "type": "string",
+            "description": "The password for the user"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "CreateSubscriberDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email address of the subscriber"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The organization id the subscriber belongs to"
+          },
+          "custom_fields": {
+            "type": "object",
+            "description": "The custom fields for the subscriber"
+          },
+          "gpg_public_key": {
+            "type": "string",
+            "description": "The GPG public key for the subscriber"
+          }
+        },
+        "required": [
+          "email",
+          "organization_id"
+        ]
+      },
+      "UpdateSubscriberDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateListDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the list"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The organization id the list belongs to"
+          },
+          "custom_fields": {
+            "type": "object",
+            "description": "The custom fields for the list"
+          }
+        },
+        "required": [
+          "name",
+          "organization_id"
+        ]
+      },
+      "UpdateListDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateCampaignDto": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "The subject of the campaign"
+          },
+          "content": {
+            "type": "string",
+            "description": "The content of the campaign"
+          },
+          "list_id": {
+            "type": "string",
+            "description": "The list id the the campaign belongs to"
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The organization id the campaign belongs to"
+          }
+        },
+        "required": [
+          "subject",
+          "content",
+          "list_id",
+          "organization_id"
+        ]
+      },
+      "CreateOrganizationDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the organization"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    }
+  }
+}
